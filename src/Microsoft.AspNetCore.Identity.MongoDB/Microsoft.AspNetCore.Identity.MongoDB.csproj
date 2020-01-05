@@ -1,31 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>A MongoDB provider for ASP.NET Core 2 Identity framework.</Description>
-    <VersionPrefix>2.0.0</VersionPrefix>
-    <Authors>Wes Higbee</Authors>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Description>A MongoDB provider for ASP.NET Core 3 Identity framework.</Description>
+    <VersionPrefix>3.0.0</VersionPrefix>
+    <Authors>Wes Higbee;Karl-Johan Sjögren</Authors>
+    <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <PackageId>Microsoft.AspNetCore.Identity.MongoDB</PackageId>
-    <PackageTags>aspnetcore2;mongo;mongodb;identity;membership</PackageTags>
-    <PackageReleaseNotes>Convert back to using DateTime to store LockoutEndDate, DateTimeOffset serializes to an array of values which could make it hard for people to sort on this and query on this. Also DateTime was used in the v2 driver, so this makes the upgrade story easier.</PackageReleaseNotes>
-    <PackageProjectUrl>https://github.com/alextochetto/aspnetcore-identity-mongodb</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/alextochetto/aspnetcore-identity-mongodb/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageTags>aspnetcore3;mongo;mongodb;identity;membership</PackageTags>
+    <PackageProjectUrl>https://github.com/karl-sjogren/aspnetcore-identity-mongodb</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/karl-sjogren/aspnetcore-identity-mongodb/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/alextochetto/aspnetcore-identity-mongodb</RepositoryUrl>
-    <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard2.0' ">2.0.0</NetStandardImplicitPackageVersion>
+    <RepositoryUrl>https://github.com/karl-sjogren/aspnetcore-identity-mongodb</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>Microsoft.AspNetCore.Identity.MongoDB</Product>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.0.1" />
-    <PackageReference Include="MongoDB.Driver" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="3.1.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.10.0" />
   </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
-    <Reference Include="System" />
-    <Reference Include="Microsoft.CSharp" />
-  </ItemGroup>
-
 </Project>

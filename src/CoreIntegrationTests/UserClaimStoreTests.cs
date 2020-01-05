@@ -107,7 +107,7 @@
 
 			var matchedUsers = await manager.GetUsersForClaimAsync(claim);
 
-			Expect(matchedUsers.Count, Is.EqualTo(1));
+			Expect(matchedUsers.Count(), Is.EqualTo(1));
 			Expect(matchedUsers.Single().UserName, Is.EqualTo("with"));
 
 			var matchesForWrongType = await manager.GetUsersForClaimAsync(new Claim("wrongType", "sameValue"));
