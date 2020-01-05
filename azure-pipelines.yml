@@ -6,7 +6,7 @@ trigger:
     include:
       - '*'
 jobs:
-- job: Windows
+- job: aspnetcore-identity-mongodb
   pool: 
     vmImage: 'ubuntu-latest'
   steps:
@@ -35,7 +35,8 @@ jobs:
   - task: NuGetCommand@2
     displayName: 'Publish NuGet Package'
     inputs:
-      command: push
+      command: 'push'
       packagesToPush: '**/*.nupkg'
-      publishVstsFeed: 'testalicious'
+      nuGetFeedType: 'internal'
+      publishVstsFeed: '6ab8aa96-6218-446e-9910-e7c6b68c4e1f/dcbc0de1-6d8e-4f54-986b-ef359d234aff'
       allowPackageConflicts: true
