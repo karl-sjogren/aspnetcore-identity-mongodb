@@ -1,10 +1,9 @@
-name: .NET Core
+name: .NET Core Publish Package
 
 on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -17,3 +16,5 @@ jobs:
       run: dotnet test
     - name: Package nuget package
       run: dotnet build --configuration Release --output artifacts src/Microsoft.AspNetCore.Identity.MongoDB/Microsoft.AspNetCore.Identity.MongoDB.csproj
+    - name: Publish nuget package
+      run: dotnet nuget push "artifacts/*.nupkg" --source "github"
