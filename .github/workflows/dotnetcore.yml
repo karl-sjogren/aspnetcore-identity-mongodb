@@ -16,5 +16,5 @@ jobs:
       run: dotnet test
     - name: Package nuget package
       run: dotnet build --configuration Release --output artifacts src/Microsoft.AspNetCore.Identity.MongoDB/Microsoft.AspNetCore.Identity.MongoDB.csproj
-    - name: Publish nuget package
-      run: dotnet nuget push "artifacts/*.nupkg" --source "github"
+    #- name: Publish nuget package
+    #  run: dotnet nuget push "artifacts/*.nupkg" --source "github"
