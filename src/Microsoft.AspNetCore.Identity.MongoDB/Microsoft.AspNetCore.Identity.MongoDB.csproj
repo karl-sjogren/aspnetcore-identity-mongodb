@@ -13,7 +13,7 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/karl-sjogren/aspnetcore-identity-mongodb</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Product>Microsoft.AspNetCore.Identity.MongoDB</Product>
+    <IsPackable>True</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>

@@ -11,7 +11,7 @@
 
 	public class UserIntegrationTestsBase : AssertionHelper
 	{
-    	internal static MongoDbRunner _runner;
+    	private static MongoDbRunner _runner;
 		internal static MongoDbRunner Runner => _runner ?? (_runner = MongoDbRunner.Start());
 		protected MongoDatabase Database;
 		protected MongoCollection<IdentityUser> Users;
