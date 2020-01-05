@@ -1,0 +1,41 @@
+trigger:
+  branches:
+    include:
+    - '*'
+  tags:
+    include:
+      - '*'
+jobs:
+- job: Windows
+  pool: 
+    vmImage: 'ubuntu-latest'
+  steps:
+  - task: UseDotNet@2
+    displayName: 'Install .NET Core'
+    inputs:
+      packageType: 'sdk'
+      version: '3.1.100'
+  - task: CmdLine@2
+    displayName: 'Run tests'
+    inputs:
+      script: 'dotnet test'
+      failOnStderr: true
+      workingDirectory: '$(Build.SourcesDirectory)'
+  - task: CmdLine@2
+    displayName: 'Build .NET Core Build'
+    inputs:
+      script: 'dotnet build --configuration Release --output artifacts src/Microsoft.AspNetCore.Identity.MongoDB/Microsoft.AspNetCore.Identity.MongoDB.csproj'
+      failOnStderr: true
+      workingDirectory: '$(Build.SourcesDirectory)'
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish artifacts'
+    inputs:
+      pathtoPublish: artifacts
+      artifactName: build-artifacts
+  - task: NuGetCommand@2
+    displayName: 'Publish NuGet Package'
+    inputs:
+      command: push
+      packagesToPush: '**/*.nupkg'
+      publishVstsFeed: 'testalicious'
+      allowPackageConflicts: true
