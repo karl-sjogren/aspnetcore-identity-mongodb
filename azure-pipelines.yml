@@ -6,7 +6,7 @@ trigger:
     include:
       - '*'
 jobs:
-- job: aspnetcore-identity-mongodb
+- job: aspnetcore.identity.mongodb
   pool: 
     vmImage: 'ubuntu-latest'
   steps:
