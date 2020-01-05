@@ -13,5 +13,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.100
-    - name: Build with dotnet
-      run: dotnet build --configuration Release
+    - name: Run tests
+      run: dotnet test
+    - name: Package nuget package
+      run: dotnet build --configuration Release --output artifacts src/Microsoft.AspNetCore.Identity.MongoDB/Microsoft.AspNetCore.Identity.MongoDB.csproj
